@@ -1,0 +1,70 @@
+
+
+
+    <div class="container theme-showcase" role="main">
+
+      <p>
+<!--        <button class="btn btn-sm btn-default active" type="button">全部</button>-->
+        <a href="{:url('index','','')}/category/{$head.category}/cate/0">
+          <button class='btn btn-sm btn-default {if condition="$head.cate eq 0"} active {/if}' type="button">全部</button>
+        </a>
+        {foreach $head.sub_nav as $item}
+        <a href="{:url('index','','')}/category/{$head.category}/cate/{$item.cid}">
+          <button class='btn btn-sm btn-default {if condition="$head.cate eq $item.cid"} active {/if}' type="button">
+            {$item.cname}
+          </button>
+        </a>
+        {/foreach}
+      </p>
+
+      <div class="row all-event-list mt20">
+        {foreach $info as $v}
+        
+          <div class="col-md-3 col-sm-4 col-xs-12">
+              <div class="widget-event">
+                <a href="{:url('Article/index','','')}/category/{$head.category}/cate/{$cate}/id/{$v.aid}"><img class="widget-event__banner lazy" src="__IMG__/article_06.png"></a>
+                <div class="widget-event__info">
+                  <h2 class="h4 title"><a href="{:url('Article/index','','')}/category/{$head.category}/cate/{$cate}/id/{$v.aid}">{$v.title}</a></h2>
+                  <ul class="widget-event__meta">
+                    <li>时间：{$v.pubtime|date="Y-m-d H:i:s",###}</li>
+                  </ul>
+                  <a class="btn btn-default btn-sm" href="{:url('Article/index','','')}/category/{$head.category}/cate/{$cate}/id/{$v.aid}">查看</a>
+                </div>
+              </div>
+            </div>
+       {/foreach}
+
+
+        <!-- <div class="col-md-3 col-sm-4 col-xs-12">
+          <div class="widget-event">
+            <a href="article.html"><img class="widget-event__banner lazy" src="__IMG__/article_06.png"></a>
+            <div class="widget-event__info">
+              <h2 class="h4 title"><a href="article.html">未来人体科技也许是：耳朵听颜色、手臂听音乐</a></h2>
+              <ul class="widget-event__meta">
+                <li>时间：2015-09-19</li>
+              </ul>
+              <a class="btn btn-default btn-sm" href="article.html">查看</a>
+            </div>
+          </div>
+        </div>
+    -->
+
+
+
+      </div>
+
+
+      <div class="text-center">
+        <!-- <ul class="pagination">
+          <li class="active"><a href="javascript:void(0);">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li class="next"><a href="#" rel="next">下一页</a></li>
+        </ul> -->
+        {$page->render()}
+      </div>
+
+
+    </div>
